@@ -1,0 +1,201 @@
+/* src/styles/CreateGroupModal.css */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Keep explicit for backdrop dimming */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.modal-content {
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Keep explicit for shadow */
+  width: 90%;
+  max-width: 450px;
+  z-index: 1051;
+  border: 1px solid var(--border-color);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color-light); /* Softened border changed */
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.4em;
+  color: var(--text-primary);
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+.modal-close-button:hover {
+  color: var(--text-primary);
+}
+
+.modal-body .form-group {
+  margin-bottom: 18px;
+}
+
+.modal-body label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.modal-body input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  box-sizing: border-box;
+  font-size: 1em;
+}
+.modal-body input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-color) 30%, transparent);
+}
+
+
+.search-results-list, .selected-users-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+  max-height: 120px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--background-tertiary);
+}
+
+.search-results-list li, .selected-users-list li {
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color-light); /* Changed border color */
+}
+.search-results-list li:last-child, .selected-users-list li:last-child {
+  border-bottom: none;
+}
+
+.search-results-list li:hover {
+  background-color: var(--chat-item-hover-bg); /* Use chat item hover or similar */
+}
+
+.selected-user-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+.selected-user-item span {
+    color: var(--text-primary);
+}
+
+.remove-user-button {
+  background: transparent;
+  color: var(--color-danger); /* Changed from #f04747 */
+  border: none;
+  padding: 3px 7px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  line-height: 1;
+}
+.remove-user-button:hover {
+    color: var(--color-danger-hover); /* Changed from #d84141 */
+}
+
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color-light); /* Changed border color */
+}
+
+.modal-button {
+  padding: 10px 18px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95em;
+  transition: background-color 0.2s ease;
+}
+
+.modal-button.primary {
+  background-color: var(--accent-color);
+  color: var(--button-text);
+}
+.modal-button.primary:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--accent-color) 85%, black);
+}
+.modal-button.primary:disabled {
+  background-color: var(--background-tertiary);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.modal-button.secondary {
+  background-color: var(--background-tertiary);
+  color: var(--text-primary);
+}
+.modal-button.secondary:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--background-tertiary) 85%, black);
+}
+.modal-button.secondary:disabled {
+   background-color: var(--background-tertiary); /* Same as primary disabled */
+   color: var(--text-secondary); /* Same as primary disabled */
+   cursor: not-allowed;
+}
+
+
+.error-message {
+  color: var(--color-error); /* Changed from #f04747 */
+  font-size: 0.9em;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+.selected-users-container {
+    margin-top: 15px;
+}
+.selected-users-container h4 {
+    font-size: 0.95em;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.empty-state-message {
+    padding: 10px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.9em;
+}

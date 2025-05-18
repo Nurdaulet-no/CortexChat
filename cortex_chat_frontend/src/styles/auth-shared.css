@@ -1,0 +1,127 @@
+h2 {
+    color: var(--text-primary); /* Changed from #fff */
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 0;
+    background: none;
+    border: none;
+    border-bottom: 2px solid var(--text-primary); /* Changed from #fff */
+    color: var(--text-primary); /* Changed from #fff */
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: var(--text-primary); /* Changed from #fff */
+    font-size: 16px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+    top: -20px;
+    font-size: 12px;
+    color: var(--link-color); /* Changed from #4ecdc4 */
+}
+
+.input-group input:focus {
+    border-bottom-color: var(--link-color); /* Changed from #4ecdc4 */
+}
+
+
+button {
+    width: 100%;
+    padding: 12px;
+    /* Removed hardcoded gradient, rely on button-bg var */
+    background: var(--button-bg); /* Uses button-bg */
+    border: none;
+    border-radius: 25px;
+    color: var(--button-text); /* Uses button-text */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    /* Rely on button-bg hover state if needed, or use color-mix */
+     /* Simplified hover effect */
+    filter: brightness(1.1);
+    transform: scale(1.05);
+    /* background: linear-gradient(45deg, #444444, #999999); /* Removed hardcoded */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Keep shadow */
+}
+
+button:disabled {
+    background-color: var(--background-tertiary); /* Uses tertiary background */
+    color: var(--text-secondary); /* Uses secondary text */
+    cursor: not-allowed;
+    filter: none; /* Remove brightness filter when disabled */
+    transform: none; /* Remove scale on hover when disabled */
+    box-shadow: none;
+}
+
+
+p {
+    color: var(--text-primary); /* Changed from #fff */
+    text-align: center;
+    margin-top: 20px;
+}
+
+p a {
+    color: var(--link-color); /* Changed from #4ecdc4 */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+p a:hover {
+    color: var(--link-hover-color); /* Changed from #3bb8b0 */
+}
+.error {
+    color: var(--color-error); /* Changed from #ff6b6b */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    /* Background/border based on error color */
+    background-color: color-mix(in srgb, var(--color-error) 10%, transparent);
+    padding: 10px;
+    border: 1px solid var(--color-error); /* Changed from #ff6b6b */
+    border-radius: 5px;
+}
+
+.success-message {
+    background: color-mix(in srgb, var(--color-success) 90%, transparent); /* Changed from rgba(46, 204, 113, 0.9) */
+    color: var(--button-text); /* Changed from #fff - assuming success text is white/light */
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+
+.success-message.visible {
+    opacity: 1;
+    max-height: 100px;
+}

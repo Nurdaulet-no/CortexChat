@@ -1,0 +1,31 @@
+.register-page-wrapper { /* Style this new wrapper */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Takes full viewport height */
+    width: 100%;      /* Takes full viewport width */
+    padding: 20px; /* Optional padding for the wrapper */
+    background: linear-gradient(45deg, #000000, #d9d9d9);
+    background-size: 400%;
+    animation: colorShift 10s ease infinite; /* Apply animation here */
+}
+
+
+.register-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 1s ease;
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        margin: 20px;
+    }
+}

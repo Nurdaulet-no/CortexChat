@@ -1,0 +1,59 @@
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+### STS ###
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+### IntelliJ IDEA (if backend is sometimes opened as a standalone project) ###
+.idea/
+# *.iml  # Only if backend has its own .iml distinct from the root
+# *.iws
+# *.ipr
+
+### NetBeans ###
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+# build/ # If using Gradle in addition to/instead of Maven for some parts
+
+### VS Code (if backend is sometimes opened in VS Code) ###
+.vscode/
+
+### Compiled Output & Logs ###
+*.class
+*.log
+
+### BlueJ ###
+*.ctxt
+
+### Mobile Tools for Java (J2ME) ###
+.mtj.tmp/
+
+### Package Files (Generally covered by target/ for Maven) ###
+# *.jar
+# *.war
+# *.nar
+# *.ear
+# *.zip
+# *.tar.gz
+# *.rar
+
+### JVM Crash Logs ###
+hs_err_pid*
+replay_pid*

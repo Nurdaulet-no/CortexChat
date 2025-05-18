@@ -1,0 +1,186 @@
+/* src/styles/OverlayMenu.css */
+
+.overlay-menu-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3); /* Keep explicit for backdrop dimming */
+  z-index: 99;
+  cursor: pointer;
+}
+
+.overlay-menu-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  max-width: 80%;
+  height: 100vh;
+  background-color: var(--overlay-menu-bg); /* Changed from #17212b */
+  box-shadow: var(--overlay-menu-shadow); /* Uses variable */
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+}
+
+.overlay-menu-panel.open {
+  transform: translateX(0);
+}
+
+
+.overlay-menu-header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--overlay-menu-header-bg); /* Changed from #212529 */
+  flex-shrink: 0;
+  /* border-bottom: 1px solid #2c2f33; */ /* Keep commented or add border variable */
+}
+
+.menu-user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+  background-color: var(--placeholder-avatar-bg); /* Changed from #343a40 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--placeholder-avatar-text); /* Changed from #fff */
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.menu-user-info {
+  flex-grow: 1;
+  color: var(--text-primary); /* Changed from #fff */
+}
+
+.menu-user-name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.menu-user-handle {
+  font-size: 13px;
+  color: var(--text-secondary); /* Changed from #8e9297 */
+}
+
+.menu-close-button {
+  background: none;
+  border: none;
+  color: var(--icon-color); /* Changed from #8e9297 */
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+}
+.menu-close-button:hover {
+  color: var(--text-primary); /* Changed from #fff */
+}
+
+
+.overlay-menu-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-top: 8px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--overlay-menu-text); /* Changed from #dee2e6 */
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.menu-item:hover {
+  background-color: var(--chat-item-hover-bg); /* Changed from #202b36 */
+}
+
+.menu-item i {
+  margin-right: 18px;
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+  color: var(--icon-color); /* Changed from #868e96 */
+}
+
+.menu-item-toggle {
+  justify-content: space-between;
+}
+
+.menu-item-logout span,
+.menu-item-logout i {
+  color: var(--color-danger) !important; /* Changed from #e74c3c */
+}
+.menu-item-logout:hover {
+  background-color: var(--color-danger-hover-bg); /* Changed from rgba(231, 76, 60, 0.1) */
+}
+
+
+/* Basic Toggle Switch for Night Mode (from your chat-layout.css) */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--switch-slider-bg); /* Changed from #495057 */
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: var(--switch-slider-color); /* Changed from white */
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--switch-slider-checked-bg); /* Changed from #00ccb5 */
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--switch-slider-checked-bg); /* Use checked color for focus */
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.slider.round {
+  border-radius: 20px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

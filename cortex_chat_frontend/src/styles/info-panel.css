@@ -1,0 +1,313 @@
+/* info-panel.css/
+
+/* --- Info Panel Overlay and Panel --- */
+.info-panel-overlay{
+    position: fixed; /* Используем fixed для перекрытия всего вьюпорта */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Покрываем всю ширину вьюпорта */
+    height: 100vh; /* Покрываем всю высоту вьюпорта */
+    background-color: rgba(0, 0, 0, 0.4); /* Затемнение фона */
+    z-index: 20; /* Поверх основного контента чата */
+    display: flex; /* Используем flex для позиционирования панели */
+    justify-content: flex-end; /* Выравниваем панель по правому краю */
+    visibility: hidden; /* Изначально скрыто */
+    opacity: 0; /* Изначально полностью прозрачно */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Анимация появления */
+}
+
+.info-panel-overlay.active {
+    visibility: visible; /* Делаем видимым */
+    opacity: 1; /* Появляется */
+    /* display: flex; /* Keep display flex when active */
+}
+
+.info-panel {
+    width: 360px; /* Ширина панели */
+    max-width: 90%; /* Максимальная ширина на узких экранах */
+    height: 100%; /* Высота на всю высоту вьюпорта */
+    background-color: var(--section2-bg); /* Фон панели из переменных темы */
+    box-shadow: var(--info-panel-shadow); /* Тень из переменных темы */
+    transform: translateX(100%); /* Изначально сдвинуто за правый край */
+    transition: transform 0.3s ease-out; /* Анимация выезда панели */
+    display: flex;
+    flex-direction: column;
+    z-index: 21; /* Выше фона-оверлея */
+}
+/* Этот стиль заставляет панель выезжать */
+.info-panel-overlay.active .info-panel {
+    transform: translateX(0); /* Сдвигаем обратно, панель появляется */
+}
+
+
+.info-panel-header {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    background-color: var(--section1-bg); /* Фон шапки из переменных темы */
+    color: var(--text-primary); /* Цвет текста шапки из переменных темы */
+    height: 60px;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--border-color); /* Граница из переменных темы */
+}
+
+.info-panel-close {
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--icon-color); /* Цвет иконки из переменных темы */
+}
+.info-panel-close:hover {
+    color: var(--text-primary); /* Цвет иконки при наведении */
+}
+
+.info-panel-title {
+    flex-grow: 1;
+    font-size: 18px;
+    font-weight: bold;
+     white-space: nowrap; /* Не переносить текст */
+     overflow: hidden; /* Скрывать текст, выходящий за границы */
+     text-overflow: ellipsis; /* Показывать многоточие для обрезанного текста */
+}
+
+.info-panel-actions {
+    /* Display flex для иконок действий */
+    display: flex;
+    align-items: center;
+}
+.info-panel-actions i {
+    font-size: 20px;
+    color: var(--icon-color); /* Цвет иконок из переменных темы */
+    cursor: pointer;
+    margin-left: 15px; /* Отступ между иконками или от названия */
+}
+.info-panel-actions i:first-child {
+     margin-left: 0; /* У первой иконки нет левого отступа */
+}
+.info-panel-actions i:hover {
+    color: var(--text-primary); /* Цвет иконок при наведении */
+}
+
+
+.info-panel-content {
+    flex: 1; /* Занимает всю оставшуюся высоту */
+    overflow-y: auto; /* Появляется прокрутка, если контент не вмещается */
+    padding: 10px 0; /* Внутренний отступ сверху/снизу */
+    color: var(--text-primary); /* Цвет текста по умолчанию для контента */
+}
+
+/* --- Стили для секций внутри info-panel-content --- */
+
+.info-section {
+    padding: 15px 20px; /* Внутренние отступы секции */
+    border-bottom: 1px solid var(--border-color-light); /* Нижняя граница секции */
+}
+.info-section:last-child {
+     border-bottom: none; /* У последней секции нет нижней границы */
+}
+
+
+.info-section-header {
+    font-size: 14px;
+    color: var(--text-secondary); /* Цвет заголовка секции */
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Секция "Обзор чата" (Аватар, Название, Счетчик/Статус) */
+.chat-info-overview {
+    display: flex;
+    align-items: center;
+    /* Padding уже в info-section */
+}
+
+.info-chat-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+    /* Background set dynamically via inline style */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--placeholder-avatar-text); /* Цвет текста на аватаре */
+    font-weight: bold;
+    font-size: 24px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+
+.info-chat-details {
+    flex-grow: 1;
+     min-width: 0;
+     overflow: hidden;
+}
+
+.info-chat-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+
+.info-chat-count {
+    font-size: 14px;
+    color: var(--text-secondary);
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+
+
+/* Секция "Участники" */
+.info-participants-section {
+     /* Наследует padding и border-bottom от .info-section */
+}
+/* Отдельный стиль для заголовка списка участников */
+.info-members-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px; /* Добавляем padding */
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color-light);
+}
+.info-members-header:hover {
+    background-color: var(--chat-item-hover-bg); /* Цвет при наведении */
+}
+
+.info-members-header i {
+    margin-left: 10px;
+    font-size: 16px;
+    color: var(--icon-color);
+}
+
+/* Список участников (ul) */
+.info-members-list {
+    list-style: none;
+    padding: 0; /* Убираем стандартные отступы списка */
+    margin: 0;
+}
+
+/* Отдельный пункт списка участника (li) */
+.info-participant-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px; /* Внутренние отступы пункта */
+    border-bottom: 1px solid var(--border-color-light); /* Граница между пунктами */
+}
+.info-participant-item:last-child {
+    border-bottom: none; /* У последнего пункта нет границы */
+}
+.info-participant-item:hover {
+    background-color: var(--chat-item-hover-bg); /* Цвет при наведении */
+}
+
+.info-participant-item .chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-color: var(--placeholder-avatar-bg); /* Fallback */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--placeholder-avatar-text);
+    font-weight: bold;
+    font-size: 16px;
+    flex-shrink: 0; /* Prevent shrinking */
+    overflow: hidden;
+}
+
+.participant-details {
+    flex-grow: 1; /* This will push the remove button to the right */
+    display: flex; /* To align username and (You) label if needed, or just for structure */
+    align-items: center;/* Stack username and status if you add status later */
+    min-width: 0; /* Important for text-overflow to work */
+}
+
+/* Информация об участнике (имя, статус) */
+.participant-info {
+    flex-grow: 1; /* Занимает доступное место */
+     min-width: 0; /* Предотвращает переполнение */
+     overflow: hidden; /* Скрывает текст, выходящий за границы */
+}
+.participant-username {
+    flex-grow: 1;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+.participant-status {
+     font-size: 12px;
+     color: var(--text-secondary);
+}
+
+.participant-you-label {
+    font-size: 13px;
+    color: var(--text-secondary); /* Цвет метки */
+    margin-left: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+
+/* Кнопка удаления участника */
+.remove-participant-button{
+    background: none;
+    border: none;
+    color: var(--color-danger); /* Красный цвет из переменных */
+    font-size: 1.2em; /* Размер иконки */
+    cursor: pointer;
+
+    width: 30px;       /* Give it a fixed width */
+    height: 30px;      /* Give it a fixed height (optional, but good for consistency) */
+    display: flex;     /* To center the '×' inside */
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px; /* Space between details/label and this button */
+    padding: 0;        /* Remove padding if using fixed width/height for precise control */
+    flex-shrink: 0;    /* IMPORTANT: Prevent this button from shrinking */
+    line-height: 1;    /* May not be needed if using flex to center */
+    transition: color 0.2s;
+}
+.remove-participant-button:hover:not(:disabled) { 
+    color: var(--color-danger-hover); /* Цвет при наведении */
+}
+.remove-participant-button:disabled { 
+    color: var(--text-secondary); /* Серый цвет, когда отключена */
+    cursor: not-allowed;
+}
+.remove-participant-button i.fa-spin {
+    font-size: 1em; /* Размер спиннера как размер кнопки */
+}
+
+
+/* --- Кнопка "Покинуть группу" / "Удалить чат" --- */
+/* Сейчас стили заданы инлайн в InfoPanel.jsx, их можно вынести сюда при желании */
+/* Пример:
+.info-section button {
+    background: none;
+    border: none;
+    color: var(--color-danger);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0; // Adjust padding as needed
+}
+.info-section button:hover {
+    text-decoration: underline; // Пример эффекта при наведении
+}
+*/

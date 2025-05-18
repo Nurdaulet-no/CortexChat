@@ -1,0 +1,203 @@
+/* src/styles/base.css */
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400; /* Regular */
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 600; /* Bold */
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype'); /* Consider using Poppins-Light.ttf if you have it */
+    font-weight: 300; /* Light */
+}
+
+:root {
+  /* Light Theme Variables */
+  --background-primary: #ffffff; /* Main background, e.g., body, section-1 */
+  --background-secondary: #f0f2f5; /* Secondary background, e.g., chat app wrapper, section-3, menu header */
+  --background-tertiary: #e4e6eb; /* Tertiary background, e.g., input fields, message bubbles (other) */
+  --text-primary: #050505; /* Main text color */
+  --text-secondary: #65676b; /* Secondary text color, e.g., timestamps, descriptions, placeholders */
+  --text-tertiary: #bdc3c7; /* Less prominent text */
+  --accent-color: #1877f2; /* Primary accent color, e.g., buttons, links */
+  --border-color: #ced0d4; /* Standard border color */
+  --border-color-light: #e7e7e7; /* Lighter border */
+  --body-gradient-start: #e0e0e0;
+  --body-gradient-end: #ffffff;
+
+  /* Specific Component Colors - Mapping light theme to general variables */
+  --chat-app-bg: var(--background-secondary); /* Chat app container */
+  --section1-bg: var(--background-primary); /* Left sidebar */
+  --section2-bg: var(--background-primary); /* Chat list sidebar */
+  --section3-bg: var(--background-secondary); /* Message area */
+  --chat-item-hover-bg: #f2f2f2; /* Chat item hover */
+  --chat-item-active-bg: #e7f3ff; /* Chat item active (selected) */
+  --message-bubble-me-bg: #0084ff; /* My message bubble */
+  --message-bubble-other-bg: var(--background-tertiary); /* Other message bubble */
+  --message-text-me: #ffffff; /* My message text */
+  --message-text-other: var(--text-primary); /* Other message text */
+  --input-bg: var(--background-tertiary); /* Input field background */
+  --input-text: var(--text-primary); /* Input field text */
+  --input-border: var(--border-color); /* Input border */
+  --button-bg: var(--accent-color); /* Button background */
+  --button-text: #ffffff; /* Button text */
+  --icon-color: var(--text-secondary); /* General icon color */
+  --link-color: #4ecdc4; /* Specific link color for auth pages */
+  --link-hover-color: #3bb8b0; /* Specific link hover color for auth pages */
+  --switch-slider-bg: #ccc; /* Switch (off) background */
+  --switch-slider-checked-bg: #2196F3; /* Switch (on) background - using a standard blue */
+   --switch-slider-color: #fff; /* Switch knob color */
+  --placeholder-avatar-bg: var(--border-color); /* Placeholder avatar background */
+  --placeholder-avatar-text: var(--text-secondary); /* Placeholder avatar text */
+  --color-error: #ff6b6b; /* Error message color */
+  --color-success: #2ecc71; /* Success message color */
+  --color-danger: #f04747; /* Danger/Logout color */
+  --color-danger-hover: #d84141; /* Danger hover color */
+  --color-danger-hover-bg: rgba(231, 76, 60, 0.1); /* Danger hover background */
+
+  /* Chat Specific Visual Elements */
+  --chat-accent-color: #00ccb5; /* Turquoise accent in chat (icons, counters, read status) */
+  --chat-accent-text: #000; /* Text color on chat accent background */
+  --search-box-bg: var(--background-tertiary); /* Search/Input wrapper background */
+  --border-color-hover: var(--text-secondary); /* Border/Splitter hover color */
+  --chat-sender-color: #e91e63; /* Group chat sender name color */
+  --forwarded-border-color: #5288c1; /* Forwarded message border/accent */
+  --reply-preview-bg: rgba(0, 0, 0, 0.05); /* Reply preview background */
+  --message-status-read: #4fc3f7; /* Message read tick color */
+  --message-status-sent: var(--text-secondary); /* Message sent/delivered tick color */
+  --date-chip-bg: rgba(0, 0, 0, 0.15); /* Date chip background */
+  --info-panel-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Info panel shadow */
+  --overlay-menu-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* Overlay menu shadow */
+  --overlay-menu-bg: #ffffff;
+
+
+  /* Welcome Page Specific Colors */
+  --vanta-base-rgb: 232, 157, 79; /* Base color for Vanta gradient (RGB) */
+  --welcome-section-bg: rgba(0, 0, 0, 0.75); /* Welcome section background with alpha */
+  --welcome-section-border: rgba(255, 255, 255, 0.08); /* Welcome section border with alpha */
+  --welcome-accent-color: #03dac6; /* Welcome page teal accent */
+  --welcome-highlight-color: #bb86fc; /* Welcome page purple highlight */
+}
+
+[data-theme="dark"] {
+  --background-primary: #18191a;
+  --background-secondary: #242526;
+  --overlay-menu-bg: var(--background-secondary); 
+  --background-tertiary: #3a3b3c;
+  --text-primary: #e4e6eb;
+  --text-secondary: #b0b3b8;
+  --text-tertiary: #a3b0bc; /* Using a slightly different shade */
+  --accent-color: #2d88ff;
+  --border-color: #3e4042;
+   --border-color-light: #4a4c4e;
+  --body-gradient-start: #000000;
+  --body-gradient-end: #2c3e50;
+
+  /* Specific Component Colors - Mapping dark theme */
+  --chat-app-bg: #1c1e21; /* Keeping original specific dark chat background */
+  --section1-bg: var(--background-secondary); /* #242526 */
+  --section2-bg: var(--background-secondary); /* #242526 */
+  --section3-bg: var(--background-primary); /* #18191a */
+  --chat-item-hover-bg: var(--background-tertiary); /* #3a3b3c */
+  --chat-item-active-bg: #263951; /* Darker blueish active */
+  --message-bubble-me-bg: #7eabe4; /* Blue */
+  --message-bubble-other-bg: var(--background-tertiary); /* #3a3b3c */
+  --message-text-me: #ffffff;
+  --message-text-other: var(--text-primary); /* #e4e6eb */
+  --input-bg: var(--background-tertiary); /* #3a3b3c */
+  --input-text: var(--text-primary); /* #e4e6eb */
+  --input-border: var(--border-color); /* #3e4042 */
+  --button-bg: var(--accent-color); /* #2d88ff */
+  --button-text: #ffffff;
+  --icon-color: var(--text-secondary); /* #b0b3b8 */
+  --link-color: #66ffcc; /* Brighter greenish-cyan */
+  --link-hover-color: #55eecc;
+  --switch-slider-bg: #5b5d60; /* Dark grey switch off */
+  --switch-slider-checked-bg: #00ccb5; /* Turquoise switch on */
+  --switch-slider-color: #fff; /* White knob (same) */
+  --placeholder-avatar-bg: #4a4c4e; /* Dark grey placeholder */
+  --placeholder-avatar-text: var(--text-primary); /* #e4e6eb */
+  --color-error: #f04747; /* Red (same) */
+  --color-success: #2ecc71; /* Success (same) */
+  --color-danger: #f04747; /* Danger/Logout color (same) */
+  --color-danger-hover: #d84141; /* Danger hover (same) */
+   --color-danger-hover-bg: rgba(231, 76, 60, 0.2); /* Slightly less transparent red hover */
+
+   /* Chat Specific Visual Elements */
+  --chat-accent-color: #00ccb5; /* Turquoise accent (same) */
+  --chat-accent-text: #000; /* Text color on chat accent background (same) */
+  --search-box-bg: #242f3d; /* Original dark #242f3d */
+  --border-color-hover: #5b5d60; /* Darker grey for splitter hover */
+  --chat-sender-color: #e91e63; /* Group chat sender name (same) */
+  --forwarded-border-color: #5288c1; /* Forwarded message border/accent (same) */
+  --reply-preview-bg: rgba(255, 255, 255, 0.05); /* Reply preview background (semi-transparent white) */
+  --message-status-read: #4fc3f7; /* Message read tick (same) */
+  --message-status-sent: var(--text-secondary); /* Message sent/delivered tick (same) */
+  --date-chip-bg: rgba(23, 33, 43, 0.85); /* Date chip background (original dark) */
+  --info-panel-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Slightly darker shadow */
+  --overlay-menu-shadow: 2px 0 10px rgba(0, 0, 0, 0.4); /* Slightly darker shadow */
+
+  /* Welcome Page Specific Colors */
+  --vanta-base-rgb: 7, 11, 18; /* Base color for Vanta gradient (RGB) */
+  --welcome-section-bg: rgba(12, 17, 28, 0.75); /* Welcome section background with alpha */
+  --welcome-section-border: rgba(255, 255, 255, 0.08); /* Welcome section border with alpha (same) */
+  --welcome-accent-color: #03dac6; /* Welcome page teal accent (same) */
+  --welcome-highlight-color: #bb86fc; /* Welcome page purple highlight (same) */
+}
+
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100%;
+
+    /* THEME-AWARE BODY STYLES */
+    background-color: var(--background-primary); /* Fallback */
+    color: var(--text-primary);
+    background: linear-gradient(45deg, var(--body-gradient-start), var(--body-gradient-end));
+    background-size: 400%; /* Keep your animation */
+    animation: colorShift 10s ease infinite; /* Keep your animation */
+
+    /* Add transition for smooth theme changes */
+    transition: background-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: var(--chat-app-bg); /* This should probably be on chat-app-container */
+}
+
+
+@keyframes colorShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

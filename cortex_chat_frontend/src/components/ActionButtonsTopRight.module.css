@@ -1,0 +1,155 @@
+/* src/components/ActionButtonsTopRight.module.css */
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  align-items: center;
+}
+
+/* Cyber-themed button styling to match login form */
+.cyberButton {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: all 0.5s;
+  letter-spacing: 4px;
+  color: #03e9f4;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.cyberButton:hover {
+  background-color: #bdd4e8;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #bdd4e8,
+              0 0 25px #bdd4e8,
+              0 0 50px #bdd4e8,
+              0 0 100px #bdd4e8;
+}
+
+/* Lines for animation effects */
+.cyberButton .line1,
+.cyberButton .line2,
+.cyberButton .line3,
+.cyberButton .line4 {
+  position: absolute;
+  display: block;
+  opacity: 0.8; /* Slightly more subtle lines */
+}
+
+/* Top line */
+.cyberButton .line1 {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btnAnimA 1500ms linear infinite;
+}
+
+/* Right line */
+.cyberButton .line2 {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btnAnimB 1500ms linear infinite;
+  animation-delay: 300ms;
+}
+
+/* Bottom line */
+.cyberButton .line3 {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btnAnimC 1500ms linear infinite;
+  animation-delay: 600ms;
+}
+
+/* Left line */
+.cyberButton .line4 {
+  left: 0;
+  bottom: -100%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btnAnimD 1500ms linear infinite;
+  animation-delay: 900ms;
+}
+
+.buttonText {
+  background: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: white;
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* Animation for the top line */
+@keyframes btnAnimA {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+/* Animation for the right line */
+@keyframes btnAnimB {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+/* Animation for the bottom line */
+@keyframes btnAnimC {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+/* Animation for the left line */
+@keyframes btnAnimD {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+/* Clicked state animation */
+.cyberButton.open {
+  transform: scale(1.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s 0.1s ease-out;
+}
+
+/* Spacing modification for SignIn and SignUp buttons if needed */
+.btnSignin {
+  margin-right: 5px;
+}
+
+.btnSignup {
+  margin-left: 5px;
+}

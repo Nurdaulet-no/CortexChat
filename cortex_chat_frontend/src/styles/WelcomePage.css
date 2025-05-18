@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  overflow-x: hidden;
+  height: 100%;
+  background-color: #070b12; /* Fallback body background */
+}
+
+/* 1. Fixed Vanta Background Container */
+.vanta-background-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1; /* Lowest z-index, stays in the back */
+}
+
+.welcome-page-container {
+  position: relative; /* Important for z-indexing of its children */
+  width: 100%;
+  min-height: 100vh;
+  height: 300vh;
+  color: #ffffff;
+  z-index: 10; /* Above Vanta background */
+  overflow-x: hidden; /* Prevent horizontal scroll on this container */
+  background-color: transparent; /* CRITICAL: so Vanta is visible through it */
+  display: flex; /* ADD: Make it a flex container */
+  flex-direction: column; 
+}
+
+/* 3. Top bar that stays fixed */
+.top-bar-content-wrapper {
+  position: fixed; /* Fixed relative to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the start of the cross axis */
+  padding: 30px 40px; /* Reduced padding slightly */
+  box-sizing: border-box;
+  z-index: 30; /* Highest z-index, above scrollable content and Vanta */
+  pointer-events: none; /* Allow clicks to pass through empty areas */
+  background: linear-gradient(to bottom, rgba(7, 11, 18, 0.9) 0%, rgba(7, 11, 18, 0.7) 50%, rgba(7, 11, 18, 0) 100%);
+  height: 120px; /* Adjust height as needed for gradient and content */
+}
+
+.top-left-content-area,
+.top-right-content-area {
+  pointer-events: auto; /* Enable interactions for logo and buttons */
+}
+
+/* 4. Scrollable content area */
+.scrollable-content {
+  position: relative; /* Stacking context */
+  width: 100%;
+  padding-top: 140px; /* Space for the fixed top bar + some breathing room */
+  padding-bottom: 50px; /* Space at the bottom */
+  box-sizing: border-box;
+  z-index: 20; /* Above Vanta, but below fixed top bar */
+
+  flex-grow: 1; /* ADD: Allow this container to grow and fill available space in welcome-page-container */
+  display: flex; /* ADD: Make it a flex container for its own children (sections and footer) */
+  flex-direction: column;
+}
+
+/* Individual content sections styling */
+.content-section {
+  max-width: 800px;
+  margin: 0 auto 60px; /* Center content, increased bottom margin */
+  padding: 25px 30px;
+  background-color: rgba(12, 17, 28, 0.75); /* Slightly darker, more opaque */
+  border-radius: 10px; /* Softer corners */
+  backdrop-filter: blur(8px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(8px); /* Safari */
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.content-section h2 {
+  color: #03dac6; /* A slightly different teal, good contrast */
+  margin-top: 0;
+  font-size: 26px; /* Slightly smaller for better balance */
+  letter-spacing: 0.5px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(3, 218, 198, 0.3); /* Subtle underline */
+  padding-bottom: 10px;
+}
+
+.content-section p {
+  line-height: 1.7; /* Improved readability */
+  margin-bottom: 18px;
+  color: #d0d0d0; /* Slightly lighter text for better readability */
+}
+
+.features-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.features-section li {
+  margin-bottom: 12px;
+  color: #d0d0d0;
+  padding-left: 30px;
+  position: relative;
+}
+
+.features-section li::before {
+  content: '❖'; /* Diamond or other symbol */
+  color: #03dac6;
+  position: absolute;
+  left: 0;
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.contact-section .contact-info {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.contact-section .contact-info p {
+  margin-bottom: 10px;
+}
+.contact-section .contact-info p strong {
+  color: #bb86fc; /* A contrasting purple for emphasis */
+}
+
+.footer-section {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: rgba(12, 17, 28, 0.75);
+  color: #999;
+  font-size: 14px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(8px); 
+  /* margin-top: 80px; Ensure space before footer appears */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: auto
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .top-bar-content-wrapper {
+    padding: 15px 20px;
+    height: 100px;
+  }
+
+  .scrollable-content {
+    padding-top: 120px; /* Adjust for smaller top bar */
+  }
+
+  .content-section {
+    padding: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 40px;
+  }
+
+  .content-section h2 {
+    font-size: 22px;
+  }
+  .features-section li {
+    padding-left: 25px;
+  }
+}

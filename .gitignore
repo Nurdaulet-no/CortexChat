@@ -1,5 +1,11 @@
-### IntelliJ IDEA ###
-.idea
-*.iws
+### IntelliJ IDEA (Root Project) ###
+# For the .idea directory and .iml file of the main project
+.idea/
 *.iml
+*.iws
 *.ipr
+
+### OS Generated Files ###
+.DS_Store
+Thumbs.db
+Desktop.ini
